@@ -1,0 +1,9 @@
+.title {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.lightMode {
+    color: #FFF;
+}

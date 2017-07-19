@@ -11,7 +11,7 @@ class LanguageSwitch extends PureComponent {
     }
 
     static defaultProps = {
-        onSelect: () => {}
+        onSelect: () => { }
     }
 
     selectLanguage = (event) => this.props.onSelect(event);
@@ -19,10 +19,10 @@ class LanguageSwitch extends PureComponent {
     render = () => {
         return (
             <div>
-                <NavLink style={{color: this.props.lightMode ? '#FFF' : '#000' }} to="/en" onClick={this.selectLanguage} className={styles.languageItem} activeClassName={styles.languageActive}>EN</NavLink>
-                &nbsp;
-                <NavLink style={{color: this.props.lightMode ? '#FFF' : '#000' }} to="/pt" onClick={this.selectLanguage} className=
-                {styles.languageItem} activeClassName={styles.languageActive}>PT</NavLink>
+                <NavLink style={{ color: this.props.lightMode ? '#FFF' : '#000' }} to="/en" onClick={this.selectLanguage} className={styles.languageItem} activeClassName={styles.languageActive}>EN</NavLink>
+                &nbsp;&nbsp;
+                <NavLink style={{ color: this.props.lightMode ? '#FFF' : '#000' }} to="/pt" onClick={this.selectLanguage} className=
+                    {styles.languageItem} activeClassName={styles.languageActive}>PT</NavLink>
             </div>
         );
     }

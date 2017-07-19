@@ -1,4 +1,9 @@
-.center {
+.social {
+    position: absolute;
+    top: auto;
+    left: 0;
+    bottom: 10vh;
+    width: 100%;
     text-align: center;
 }
 

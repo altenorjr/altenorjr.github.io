@@ -1,0 +1,17 @@
+.slide {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+
+.content {
+    text-align: center;
+}
+
+@media only screen and (max-device-width: 1023px) {
+    .slide {
+        background-image: none;
+        background-size: 180%;
+        background-position: center 530px;
+    }
+}

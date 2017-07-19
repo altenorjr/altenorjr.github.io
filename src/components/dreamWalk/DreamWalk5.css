@@ -1,0 +1,22 @@
+.slide {
+    background-color: #D2CFCA;
+}
+
+.grid {
+    margin-top: 20px;
+}
+
+.col {
+    text-align: center;
+}
+
+.inappBadges {
+    width: 100%;
+}
+
+@media only screen and (max-device-width: 1023px) {
+    .inappBadges {
+        width: 120%;
+        margin-left: -10%;
+    }
+}

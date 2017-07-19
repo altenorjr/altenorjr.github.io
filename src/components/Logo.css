@@ -1,0 +1,16 @@
+.img {
+    width: 142px;
+    height: 142px;
+}
+
+.small {
+    width: 82px;
+    height: 82px;    
+}
+
+@media only screen and (max-device-width: 1023px) {
+    .img {
+        width: 82px;
+        height: 82px;
+    }
+}

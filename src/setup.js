@@ -4,6 +4,4 @@ const Setup = () => {
     injectTapEventPlugin();
 };
 
-// screen.orientation.lock('portrait');
-
 export default Setup;

@@ -1,0 +1,14 @@
+.img {
+    width: auto;
+}
+
+@media only screen and (max-device-width: 1379px) {
+    .img {
+        width: auto;
+        max-width: 80vw;
+    }
+
+    .col {
+        margin-bottom: 80px;
+    }
+}

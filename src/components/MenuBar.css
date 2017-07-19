@@ -6,6 +6,7 @@
     left: 0;
     overflow: hidden;
     z-index: 9;
+    padding-top: 50px;
 }
 
 .menuBarIsOpen {
@@ -20,7 +21,6 @@
     position: relative;
     top: 0;
     left: 0;
-    /*background-color: #FFF;*/
 }
 
 .topBarOpen {

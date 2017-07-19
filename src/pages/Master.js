@@ -11,6 +11,7 @@ import Work from './Work';
 import Contact from './Contact';
 import About from './About';
 import Iridium from './Iridium';
+import DreamWalk from './DreamWalk';
 
 class Master extends PureComponent {
     state = {
@@ -33,6 +34,9 @@ class Master extends PureComponent {
                     )} />
                     <Route path={`/${lang}/work/iridium`} exact render={() => (
                         <Iridium setTopBarLightMode={this.setTopBarLightMode} />
+                    )} />
+                    <Route path={`/${lang}/work/dreamwalk`} exact render={() => (
+                        <DreamWalk setTopBarLightMode={this.setTopBarLightMode} />
                     )} />
                     <Route path={`/${lang}/contact`} exact render={() => (
                         <Contact setTopBarLightMode={this.setTopBarLightMode} />

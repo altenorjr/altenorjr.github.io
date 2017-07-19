@@ -1,0 +1,18 @@
+.slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #FFB502;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(/img/iridium-merchandising.jpg);
+    background-size: contain;
+}
+
+@media only screen and (max-device-width: 1023px) {
+    .slide {
+        background-size: 150%; 
+    }
+}

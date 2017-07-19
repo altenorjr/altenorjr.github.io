@@ -11,13 +11,14 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import { Link, NavLink } from 'react-router-dom';
 
 import LanguageSwitch from './LanguageSwitch';
-import SocialIcons from './SocialIcons';
+import Menu from './Menu';
+import withDimensions from './hoc/withDimensions';
 
 import styles from './MenuBar.css';
 
 class MenuBar extends PureComponent {
     static propTypes = {
-        lightMode: PropTypes.bool
+        lightMode: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['l', 'r'])])
     };
 
     state = {
@@ -28,48 +29,21 @@ class MenuBar extends PureComponent {
 
     maybeToggleMenu = () => this.state.isOpen && this.toggleMenu();
 
-    render = () => {
-        const lang = this.props.match.params.lang;
-
-        return (
-            <div>
-                <div className={classnames(styles.menuBar, this.state.isOpen && styles.menuBarIsOpen)}>
-                    <div className={classnames(styles.topBar, this.state.isOpen && styles.topBarOpen)}>
-                        <IconButton onTouchTap={this.toggleMenu}>
-                            {!this.state.isOpen && <MenuIcon color={this.props.lightMode ? '#FFF' : '#000'} />}
-                            {this.state.isOpen && <CloseIcon />}
-                        </IconButton>
-                        <h1 className={styles.fntnl} style={{color: !this.state.isOpen && this.props.lightMode ? '#FFF' : '#000' }}>FNTNL</h1>
-                        <div className={styles.mainLanguageSwitch}>
-                            <LanguageSwitch lightMode={this.props.lightMode} onSelect={this.maybeToggleMenu} />
-                        </div>
-                    </div>
-
-                    <div className={classnames(styles.menu, this.state.isOpen && styles.menuIsOpen)}>
-                        <Grid fluid>
-                            <Row>
-                                <Col xs={12} md={4} className={styles.menuItem}><Link onClick={this.toggleMenu} to={`/${lang}/work`}>Work</Link></Col>
-                                <Col xs={12} md={4} className={styles.menuItem}><Link onClick={this.toggleMenu} to={`/${lang}/contact`}>Contact</Link></Col>
-                                <Col xs={12} md={4} className={styles.menuItem}><Link onClick={this.toggleMenu} to={`/${lang}/about`}>About</Link></Col>
-                            </Row>
-
-                            <Row className={styles.mobileLanguageSwitch}>
-                                <Col xs={8} xsOffset={2} md={4} mdOffset={4}>
-                                    <LanguageSwitch onSelect={this.toggleMenu} />
-                                </Col>
-                            </Row>
-
-                            <Row>
-                                <Col xs={12} md={4} mdOffset={4} className={styles.social}>
-                                    <SocialIcons />
-                                </Col>
-                            </Row>
-                        </Grid>
-                    </div>
+    render = () => (
+        <div className={classnames(styles.menuBar, this.state.isOpen && styles.menuBarIsOpen)}>
+            <div className={classnames(styles.topBar, this.state.isOpen && styles.topBarOpen)}>
+                <IconButton onTouchTap={this.toggleMenu}>
+                    {!this.state.isOpen && <MenuIcon color={this.props.lightMode === true || this.props.lightMode === 'l' ? '#FFF' : '#000'} />}
+                    {this.state.isOpen && <CloseIcon />}
+                </IconButton>
+                <h1 className={styles.fntnl} style={{ color: !this.state.isOpen && (this.props.lightMode === true || this.props.lightMode === 'l') ? '#FFF' : '#000' }}>FNTNL</h1>
+                <div className={styles.mainLanguageSwitch}>
+                    <LanguageSwitch lightMode={!this.state.isOpen && (this.props.lightMode === true || this.props.lightMode === 'r')} onSelect={this.maybeToggleMenu} />
                 </div>
             </div>
-        );
-    }
+            <Menu isOpen={this.state.isOpen} toggleMenu={this.toggleMenu} />
+        </div>
+    )
 }
 
-export default withRouter(MenuBar);
+export default withRouter(withDimensions(MenuBar));

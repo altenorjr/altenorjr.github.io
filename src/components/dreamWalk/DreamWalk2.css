@@ -1,0 +1,37 @@
+.container {
+    position: relative;
+}
+
+.video {
+    display: flex;
+    flex: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.video > span {
+    display: flex;
+    flex: 1;
+}
+
+.video > span > iframe {
+    flex: 1;
+}
+
+.content {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.iphone {
+    position: relative;
+}
+
+@media only screen and (max-device-width: 1023px) {
+    .iphone {
+        width: 100%;
+    }
+}

@@ -1,0 +1,40 @@
+.flexbox {
+    width: 100vw;
+    height: 100vh;
+    min-height: 900px;
+}
+
+.content {
+    flex: 1;
+    align-items: center;
+}
+
+.highlight {
+    flex-basis: 115px;
+}
+
+@media only screen and (max-device-width: 1023) {
+    .mobileContent {
+        font-weight: 100;
+        margin: auto;
+        text-align: center;
+        font-size: 16px;
+        color: rgb(0, 0, 0);
+        flex: 4;
+        display: flex;
+        align-items: center;
+        width: 90%;
+    }
+}
+
+@media only screen and (max-device-width: 1023px) and (orientation: portrait) {
+    .flexbox {
+        min-height: 100vh;
+    }
+}
+
+@media only screen and (max-device-height: 568px) and (orientation: landscape) {
+    .flexbox {
+        min-height: 568px;
+    }
+}

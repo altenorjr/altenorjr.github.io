@@ -1,0 +1,33 @@
+.text {
+    width: 700px;
+}
+
+.img {
+    width: 235px;
+    height: 334px;
+}
+
+.inappBadges {
+    width: 100%;
+}
+
+.lps {
+    text-align: left;
+    width: 90%;
+    margin: 75px auto 0 auto;    
+}
+
+@media only screen and (max-device-width: 1023px) {
+    .text {
+         width: 100%; 
+    }
+
+    .recordLabel {
+        flex-basis: 50%;
+    }
+
+    .inappBadges {
+        width: 90%;
+        margin: 0 auto 50px auto;
+    }
+}

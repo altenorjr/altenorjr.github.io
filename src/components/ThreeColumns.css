@@ -1,0 +1,52 @@
+.holder {
+    font-size: 14px;
+    line-height: 1.2em;
+    font-weight: 200;
+    width: 55%;
+    min-width: 600px;
+    display: flex;
+    align-items: flex-start;
+    flex-basis: 65px;
+}
+
+.col > * {
+    flex: 1;
+}
+
+.col h3 {
+    text-transform: uppercase;
+    margin: 0 0 5px 0;
+    font-size: 1em;
+}
+
+.col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+}
+
+.col ul li {
+    list-style: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.col1 {
+    text-align: left;
+}
+
+.col2 {
+    text-align: center;
+}
+
+.col3 {
+    text-align: right;
+}
+
+@media only screen and (max-device-width: 1023px) {
+    .holder {
+        width: 90%;
+        min-width: 0;
+    }
+}

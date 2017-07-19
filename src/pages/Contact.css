@@ -34,12 +34,6 @@
     padding: 0;
 }
 
-.social {
-    position: absolute;
-    bottom: 30px;
-    width: 100%;
-}
-
 @media only screen and (max-device-width: 1023px) {
     .content {
         width: 100%;
