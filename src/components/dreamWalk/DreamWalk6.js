@@ -1,56 +1,85 @@
 import React, { PureComponent } from 'react';
 import Flexbox from 'flexbox-react';
-import FullSizeContainer from '../FullSizeContainer';
-import CenteredContent from '../CenteredContent';
-import Logo from '../Logo';
 import Highlight from '../Highlight';
 import DescriptionText from '../DescriptionText';
-import JamBadge from '../JamBadge';
+import Title from '../Title';
 import Carousel from '../Carousel';
-import withDimensions, { atLeast, atMost, is, width, height } from '../hoc/withDimensions';
-import { sparkScrollFactory } from '../Spark';
 
-export default sparkScrollFactory(withDimensions(class DreamWalk6 extends PureComponent {
-    ipad = { height: '100vh' }
-    img = {
-        width: '90%'
+import withDimensions, { is, atLeast } from '../hoc/withDimensions';
+
+@withDimensions
+export default class DreamWalk8 extends PureComponent {
+    images = [
+        "/img/all-lps-1.png",
+        "/img/all-lps-2.png",
+        "/img/all-lps-3.png",
+        "/img/all-lps-5.png",
+        "/img/all-lps-6.png",
+        "/img/all-lps-8.png",
+        "/img/all-lps-9.png",
+        "/img/all-lps-1.png",
+        "/img/all-lps-2.png",
+        "/img/all-lps-3.png",
+        "/img/all-lps-5.png",
+        "/img/all-lps-6.png",
+        "/img/all-lps-8.png",
+        "/img/all-lps-9.png",
+        // "/img/all-lps-4.png",
+        // "/img/all-lps-7.png",
+        // "/img/all-lps-10.png"
+    ]
+
+    render = () => {
+        const all = {
+            width: '1000px',
+            marginTop: '100px'
+        };
+
+        const imgStyle = { height: '300px' };
+
+        return (
+            <Flexbox
+                flexDirection="column"
+                alignItems="center"
+                paddingTop={is('sm', this) ? '75px' : '150px'}
+                paddingBottom={is('sm', this) ? '25px' : '50px'}
+                style={{
+                    backgroundColor: "#FFF"
+                }}>
+
+                <Highlight
+                    line1="JAM for iPhone:"
+                    line2="Become a Rockstar!"
+                    invert={true}
+                    margin={0} />
+                <Title mode="small"
+                    margin={10}
+                    align="center">
+                    #1 Music App Worldwide
+                    </Title>
+
+                <DescriptionText>
+                    Since it’s recent release, Jam has been the the number one music app in 26 countries on iTunes, including Australia, New Zealand, USA and Canada.
+                    </DescriptionText>
+
+                {
+                    atLeast('md', this) && (
+                        <img style={all} alt="" src="/img/all-lps-all.png" />
+                    )
+                }
+                {
+                    is('sm', this) && (
+                        <Carousel
+                            margin={20}
+                            viewsToShow={1.5}
+                            align={0.6}>
+                            {this.images.map((image, i) => <img style={imgStyle} key={i} alt="" src={image} />)}
+                        </Carousel>
+                    )
+                }
+            </Flexbox>
+        );
+
+
     }
-    render = () => (
-        <Flexbox
-            flexDirection="column"
-            alignItems="center"
-            paddingTop={is('sm', this) ? '75px' : '125px'}
-            paddingBottom={is('sm', this) ? '25px' : '50px'}
-            width="100vw"
-            style={{
-                boxSizing: "box-border"
-            }}>
-            <Logo src="/img/asialinks-logo-1.png" />
-            <Highlight
-                line1="JAM for iPhone:"
-                line2="Become a Rockstar!"
-                margin={`0 0 ${atMost('md', this) ? 20 : 50} 0`}
-                invert={true} />
-            <JamBadge lightMode={false} />
-            <DescriptionText>
-                Since it’s recent release, Jam has been the the number one music app in 26 countries on iTunes, including Australia, New Zealand, USA and Canada.
-            </DescriptionText>
-            <img src="/img/asialinks-ipad.png" style={this.ipad} alt="" />
-            <Carousel
-                margin={atMost('md', this) ? 20 : 50}
-                viewsToShow={atMost('sm', this) ? 1.5 : (width(this) / 270) - 2}
-                align={atMost('md', this) ? 0.5 : 0.75}>
-                <img style={this.img} src="/img/asialinks-lp-1.png" />
-                <img style={this.img} src="/img/asialinks-lp-2.png" />
-                <img style={this.img} src="/img/asialinks-lp-3.png" />
-                <img style={this.img} src="/img/asialinks-lp-4.png" />
-                <img style={this.img} src="/img/asialinks-lp-5.png" />
-                <img style={this.img} src="/img/asialinks-lp-1.png" />
-                <img style={this.img} src="/img/asialinks-lp-2.png" />
-                <img style={this.img} src="/img/asialinks-lp-3.png" />
-                <img style={this.img} src="/img/asialinks-lp-4.png" />
-                <img style={this.img} src="/img/asialinks-lp-5.png" />                
-            </Carousel>            
-        </Flexbox>
-    )
-}))
+}

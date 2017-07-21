@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Flexbox from 'flexbox-react';
 
-import withDimensions, { propTypes, is } from './hoc/withDimensions';
+import withDimensions from './hoc/withDimensions';
 
 import styles from './ThreeColumns.css'
 
-export default withDimensions(class ThreeColumns extends PureComponent {
+@withDimensions
+export default class ThreeColumns extends PureComponent {
     render = () => (
         <Flexbox
             className={styles.holder}
@@ -28,4 +28,4 @@ export default withDimensions(class ThreeColumns extends PureComponent {
             </Flexbox>            
         </Flexbox>
     )
-})
+}

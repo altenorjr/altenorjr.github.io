@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Col, Row } from 'react-flexbox-grid';
-import { Link } from 'react-router-dom';
 import MediaQuery from 'react-responsive'
 
 import styles from './Contact.css';

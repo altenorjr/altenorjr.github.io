@@ -1,12 +1,10 @@
 import React, { PureComponent } from 'react';
 import Flexbox from 'flexbox-react';
-import { Grid, Col, Row } from 'react-flexbox-grid';
-import classnames from 'classnames';
 import Title from '../Title';
-import withDimensions, { is, atLeast, atMost } from '../hoc/withDimensions';
-import { sparkScrollFactory } from '../Spark';
+import withDimensions, { atLeast } from '../hoc/withDimensions';
 
-export default sparkScrollFactory(withDimensions(class Iridium6 extends PureComponent {
+@withDimensions
+export default class Iridium6 extends PureComponent {
     render = () => (
         <Flexbox 
             width="100vw"
@@ -34,4 +32,4 @@ export default sparkScrollFactory(withDimensions(class Iridium6 extends PureComp
                 }} />
         </Flexbox>
     )
-}))
+}

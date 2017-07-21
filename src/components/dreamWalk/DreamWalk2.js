@@ -1,12 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Flexbox from 'flexbox-react';
-import MediaQuery from 'react-responsive';
 import Youtube from 'react-youtube';
 
-import FullSizeContainer from '../FullSizeContainer';
-import CenteredContent from '../CenteredContent';
-import HorizontalCenter from '../HorizontalCenter';
 import Logo from '../Logo';
 import Highlight from '../Highlight';
 import DescriptionText from '../DescriptionText';
@@ -59,11 +55,11 @@ export default sparkScrollFactory(withDimensions(class DreamWalk2 extends PureCo
                     <SparkScroll.div
                         className={styles.video}
                         timeline={{
-                            'topTop-1': {
+                            [`topBottom+1`]: {
                                 onDown: () => this.playVideo(true),
                                 onUp: () => this.playVideo(false)
                             },
-                            [`topTop+${this.frameHeight()}`]: {
+                            [`bottomTop`]: {
                                 onDown: () => this.playVideo(false),
                                 onUp: () => this.playVideo(true)
                             }

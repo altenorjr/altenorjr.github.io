@@ -1,3 +1,20 @@
+html {
+    height: 100%; 
+    background-color: #FDF141;
+}
+
+body {
+    height: 100%;
+    overflow: auto;
+    background-color: #FDF141;
+    padding: 0;
+    margin: 0;
+}
+
+#root {
+    background-color: #FFF;
+}
+
 .page-enter {
   transform: translateY(100vh);
   opacity: 0.5;
@@ -12,22 +29,10 @@
 
 .page-exit {
   opacity: 1;
-  position: fixed;
-  bottom: 0;
-  left: 0;
 }
 
 .page-exit-active {
   transition: 200ms ease-in-out;
   bottom: 100vh;
-  opacity: 0;
-}
-
-.fntl_ending a,
-.fntl_ending a:link,
-.fntl_ending a:visited,
-.fntl_ending a:active,
-.fntl_ending a:hover, {
-  text-decoration: none;
-  color: #509C27;
+  opacity: 0.3;
 }

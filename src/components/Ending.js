@@ -3,27 +3,30 @@ import PropTypes from 'prop-types';
 
 import { Link, withRouter } from 'react-router-dom';
 import { StyleSheet } from 'react-look';
-import cx from 'classnames';
 
-import Loud from './Loud';
 import Cliffhanger from './Cliffhanger';
 
 @withRouter
 export default class Ending extends PureComponent {
     static propTypes = {
-        children: PropTypes.node.isRequired,
+        contactLinkText: PropTypes.node,
         link: PropTypes.string.isRequired,
         linkText: PropTypes.node.isRequired
     }
 
-    render = () => {
-        const lang = this.props.location.pathname.split('/')[1];
+    lang = () => this.props.location.pathname.split('/')[1];
 
+    render = () => {
         return (
-            <div className={cx(styles.ending, "fntl_ending")}>
-                <Loud>
-                    {this.props.children}
-                </Loud>
+            <div className={styles.ending}>
+                <h1 className={styles.callout}>
+                    {
+                        this.props.children && (
+                            <div className={styles.textHolder}>{this.props.children}</div>
+                        )
+                    }
+                    <Link className={styles.contactLink} to={`/${this.lang()}/contact`}>{this.props.contactLinkText}</Link>
+                </h1>
                 <Cliffhanger
                     link={this.props.link}>
                     {this.props.linkText}
@@ -35,6 +38,7 @@ export default class Ending extends PureComponent {
 
 const styles = StyleSheet.create({
     ending: {
+        backgroundColor: "#FFF",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -44,5 +48,23 @@ const styles = StyleSheet.create({
         position: 'relative',
         top: 0,
         left: 0
+    },
+    callout: {
+        width: '90%',
+        textAlign: 'center',
+        fontWeight: 100,
+        margin: "0 auto",
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    contactLink: {
+        textDecoration: 'none',
+        color: '#509C27 !important',
+        marginTop: '20px'
+    },
+    textHolder: {
+        width: "90%"
     }
 });

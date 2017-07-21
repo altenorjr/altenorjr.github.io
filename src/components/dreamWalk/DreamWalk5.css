@@ -1,22 +1,13 @@
-.slide {
-    background-color: #D2CFCA;
-}
-
-.grid {
-    margin-top: 20px;
-}
-
-.col {
-    text-align: center;
-}
-
-.inappBadges {
-    width: 100%;
+.container {
+    background: -webkit-linear-gradient(top left, #7d2011 0%, #940c16 100%) !important;
+    background: -moz-linear-gradient(top left, #7d2011 0%, #940c16 100%) !important;
+    background: -o-linear-gradient(top left, #7d2011 0%, #940c16 100%) !important;
+    background: linear-gradient(to bottom right, #7d2011 0%, #940c16 100%) !important;
 }
 
 @media only screen and (max-device-width: 1023px) {
-    .inappBadges {
-        width: 120%;
-        margin-left: -10%;
+    .carousel {
+        position: static;
+        left: 0;
     }
 }

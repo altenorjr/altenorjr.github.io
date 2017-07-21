@@ -25,7 +25,7 @@ export default class Carousel extends PureComponent {
         delete forwardProps.margin;
         delete forwardProps.style;
 
-        const margin = typeof this.props.margin == 'number' ? `${this.props.margin}px` : this.props.margin;
+        const margin = typeof this.props.margin === 'number' ? `${this.props.margin}px` : this.props.margin;
 
         const styleObj = Object.assign({
             width: '100%',

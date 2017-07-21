@@ -8,12 +8,11 @@ import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import CloseIcon from 'material-ui/svg-icons/navigation/close';
 import IconButton from 'material-ui/IconButton';
 
-import { Grid, Row, Col } from 'react-flexbox-grid';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import LanguageSwitch from './LanguageSwitch';
 import Menu from './Menu';
-import withDimensions, { atLeast, atMost } from './hoc/withDimensions';
+import withDimensions, { atLeast } from './hoc/withDimensions';
 
 import styles from './MenuBar.css';
 

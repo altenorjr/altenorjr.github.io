@@ -1,28 +1,16 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Col, Row } from 'react-flexbox-grid';
-import { Fullpage, Slide } from 'fullpage-react';
-import { Link, withRouter } from 'react-router-dom';
-import classnames from 'classnames';
-import look from 'react-look';
-import newless from 'newless';
 import Flexbox from 'flexbox-react';
 
-import { sparkScrollFactory } from '../components/Spark';
-import withDimensions, { height, atMost, scrollTo } from '../components/hoc/withDimensions';
+import withDimensions, { atMost } from '../components/hoc/withDimensions';
 import DescriptionText from '../components/DescriptionText';
 import WorkCase from '../components/WorkCase';
 import Ending from '../components/Ending';
-import Cliffhanger from '../components/Cliffhanger';
-import Contact from './Contact';
 
 import styles from './Work.css';
 
-const LookWorkCase = look(WorkCase);
+// const LookWorkCase = look(WorkCase);
 
-const SCFlexbox = sparkScrollFactory(Flexbox);
-
-@withRouter
 @withDimensions
 export default class Work extends PureComponent {
     static propTypes = {
@@ -39,8 +27,6 @@ export default class Work extends PureComponent {
     componentWillUnmount = () => window.scrollTo(0, 0);
 
     render = () => {
-        const lang = this.props.location.pathname.split('/')[1];
-
         return (
             <div className={this.props.className}>
                 <Flexbox
@@ -61,11 +47,17 @@ export default class Work extends PureComponent {
                         props.lightMode = atMost('md', this) && props.lightMode;
 
                         return (
-                            <LookWorkCase key={i} {...props} />
+                            <WorkCase key={i} {...props} />
                         );
                     })
                 }
-                <Ending />
+                <Ending
+                    contactLinkText="Let's Talk."
+                    link="/about"
+                    linkText="Or get to know more about me"
+                >
+                    Over 10 years of experience
+                </Ending>
             </div>
         );
     }

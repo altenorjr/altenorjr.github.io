@@ -1,19 +1,11 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import MediaQuery from 'react-responsive';
-import { Grid, Col, Row } from 'react-flexbox-grid';
-import cx from 'classnames';
 
-import FullSizeContainer from '../FullSizeContainer';
-import CenteredContent from '../CenteredContent';
-import HorizontalCenter from '../HorizontalCenter';
-import VerticalAlign from '../VerticalAlign';
 import DescriptionText from '../DescriptionText';
 import TwoColumns from '../TwoColumns';
 import ThreeColumns from '../ThreeColumns';
 import Titan from '../Titan';
 import Highlight from '../Highlight';
-import withDimensions, { is, atLeast, atMost } from '../hoc/withDimensions';
+import withDimensions, { is, atLeast } from '../hoc/withDimensions';
 import { sparkScrollFactory } from '../Spark';
 import styles from './Iridium1.css';
 

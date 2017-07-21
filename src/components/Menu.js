@@ -2,18 +2,10 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import MenuIcon from 'material-ui/svg-icons/navigation/menu';
-import CloseIcon from 'material-ui/svg-icons/navigation/close';
-import IconButton from 'material-ui/IconButton';
-
-import { Grid, Row, Col } from 'react-flexbox-grid';
-import { Link, NavLink, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Flexbox from 'flexbox-react';
 
 import LanguageSwitch from './LanguageSwitch';
-import FullSizeContainer from './FullSizeContainer';
-import CenteredContent from './CenteredContent';
-import VerticalAlign from './VerticalAlign';
 import SocialIcons from './SocialIcons';
 import withDimensions, { is, atMost } from './hoc/withDimensions';
 
@@ -31,13 +23,6 @@ export default withRouter(withDimensions(class Menu extends PureComponent {
 
     render = () => {
         const lang = this.props.match.params.lang;
-
-        const menuStyles = {
-            style: {
-                flexBasis: '30%',
-                justifyContent: 'center'
-            }
-        };
 
         return (
             <Flexbox

@@ -1,19 +1,12 @@
 import React, { PureComponent } from 'react';
-import look, { StyleSheet } from 'react-look';
-import newless from 'newless';
-import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
-import { Grid, Col, Row } from 'react-flexbox-grid';
-import Flexbox from 'flexbox-react';
-
-import MediaQuery from 'react-responsive';
+import { StyleSheet } from 'react-look';
 import { Link, withRouter } from 'react-router-dom';
 
-import withDimensions, { is, scrollTo, height, atLeast, atMost } from './hoc/withDimensions';
-import { sparkScrollFactory } from './Spark';
 import Title from './Title';
 import Highlight from './Highlight';
 import DescriptionText from './DescriptionText';
+import withDimensions, { height, atLeast, atMost } from './hoc/withDimensions';
 
 const cx = StyleSheet.combineStyles;
 
@@ -145,10 +138,12 @@ const styles = StyleSheet.create({
         }
     },
     imageBox_alphanation: {
-        backgroundSize: "cover"
+        backgroundSize: "cover",
+        backgroundPosition: "center center"
     },
     imageBox_img_alphanation: {
         backgroundColor: 'transparent',
+        backgroundPosition: "center center",
         "@media (max-width: 768px)": {
             position: 'absolute',
             backgroundColor: 'transparent',

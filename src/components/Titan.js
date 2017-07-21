@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import withDimensions, { propTypes, atLeast, is } from './hoc/withDimensions';
-import { sparkScrollFactory, SparkScroll } from './Spark';
+import withDimensions, { propTypes } from './hoc/withDimensions';
 
 import styles from './Titan.css';
 
-export default sparkScrollFactory(withDimensions(class Titan extends PureComponent {
+@withDimensions
+export default class Titan extends PureComponent {
     static propTypes = {
         bgColor: PropTypes.string.isRequired,
         color: PropTypes.string,
@@ -30,4 +30,4 @@ export default sparkScrollFactory(withDimensions(class Titan extends PureCompone
             </span>
         </h1>
     )
-}));
+}

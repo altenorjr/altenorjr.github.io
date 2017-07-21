@@ -1,21 +1,15 @@
 import React, { PureComponent } from 'react';
-import { Grid, Col, Row } from 'react-flexbox-grid';
 import { Switch, Route } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import { StyleSheet } from 'react-look';
 import { withRouter } from 'react-router-dom';
 
 import MenuBar from '../components/MenuBar';
-import FirstChild from '../components/hoc/FirstChild';
-import SlideUp from '../components/hoc/SlideUp';
 import Home from './Home';
 import Work from './Work';
 import Contact from './Contact';
 import About from './About';
 import Iridium from './Iridium';
 import DreamWalk from './DreamWalk';
-
-const cs = StyleSheet.combineStyles;
 
 @withRouter
 export default class Master extends PureComponent {
@@ -72,16 +66,13 @@ export default class Master extends PureComponent {
                     >
                         <Switch location={this.props.location}>
                             {
-                                this.routes(lang).map((route) => {
-                                    const isMatch = this.props.match.isExact;
-                                    return (
-                                        <Route
-                                            key={route.id}
-                                            path={route.path}
-                                            exact={route.exact}
-                                            render={() => (<route.component id={route.id} setTopBarLightMode={this.setTopBarLightMode} />)} />
-                                    );
-                                })
+                                this.routes(lang).map((route) => (
+                                    <Route
+                                        key={route.id}
+                                        path={route.path}
+                                        exact={route.exact}
+                                        render={() => (<route.component id={route.id} setTopBarLightMode={this.setTopBarLightMode} />)} />
+                                ))
                             }
                         </Switch>
                     </CSSTransition>

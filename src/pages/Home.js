@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Col, Row } from 'react-flexbox-grid';
 import { Link, withRouter } from 'react-router-dom';
 import cx from 'classnames';
 

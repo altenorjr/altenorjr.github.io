@@ -19,7 +19,7 @@ export default class Title extends PureComponent {
     }
 
     render = () => {
-        const margin = typeof this.props.margin == 'number' ? `${this.props.margin}px` : this.props.margin;
+        const margin = typeof this.props.margin === 'number' ? `${this.props.margin}px` : this.props.margin;
 
         const titleStyle = Object.assign(this.props.titleStyle || {}, {
             textAlign: `${this.props.align}`,

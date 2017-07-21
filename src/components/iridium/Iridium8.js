@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
 import Flexbox from 'flexbox-react';
-import { Grid, Col, Row } from 'react-flexbox-grid';
-import { sparkScrollFactory } from '../Spark';
-import withDimensions, { is, atLeast, atMost } from '../hoc/withDimensions';
+import withDimensions, { atLeast } from '../hoc/withDimensions';
 
-export default sparkScrollFactory(withDimensions(class Iridium8 extends PureComponent {
+@withDimensions
+export default class Iridium8 extends PureComponent {
     render = () => (
         <Flexbox 
             width="100vw"
@@ -17,7 +16,8 @@ export default sparkScrollFactory(withDimensions(class Iridium8 extends PureComp
                 boxSizing: 'border-box',
                 overflow: 'hidden'
             }}>
-            <img 
+            <img
+                alt=""
                 src="/img/iridium-merchandising.jpg" 
                 style={{
                     margin: 'auto',
@@ -25,4 +25,4 @@ export default sparkScrollFactory(withDimensions(class Iridium8 extends PureComp
                 }} />
         </Flexbox>
     )
-}))
+}

@@ -1,17 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Col, Row } from 'react-flexbox-grid';
-import { Link, withRouter } from 'react-router-dom';
-import Flexbox from 'flexbox-react';
-import cx from 'classnames';
+import { withRouter } from 'react-router-dom';
 
 import Ending from '../components/Ending';
 import Highlight from '../components/Highlight';
-import withDimensions, { atLeast, atMost } from '../components/hoc/withDimensions';
+import withDimensions, { atMost } from '../components/hoc/withDimensions';
 import DescriptionText from '../components/DescriptionText';
 import Title from '../components/Title';
-
-import classes from './About.css';
 
 import { StyleSheet } from 'react-look';
 
@@ -109,7 +104,7 @@ export default class About extends PureComponent {
                 <div className={styles.venicePic}>
                 </div>
                 <div className={styles.trophyHolder}>
-                    <img className={styles.trophy} src="/img/about-trophy.png" />
+                    <img className={styles.trophy} alt="" src="/img/about-trophy.png" />
                     <div className={styles.trophyText}>
                         <Highlight
                             className={styles.trophyTitle}
@@ -129,16 +124,16 @@ export default class About extends PureComponent {
                 <div className={styles.spotifyHolder}>
                     <Title mode="small">Spotify Jams</Title>
                     <Title mode="small" margin="10px 0 0 0" align="center" className={styles.spotifyTitle}>Time to Groove</Title>
-                    <img className={styles.spotifyPlugin} src="/img/about-spotify-placeholder.png" />
+                    <img alt="" className={styles.spotifyPlugin} src="/img/about-spotify-placeholder.png" />
                 </div>
             </div>
             <div className={styles.end}>
-                <Ending 
-                    link="/work"
-                    linkText="Or browse through a few of my work cases"
-                >
-                    Over 10 years of experience. <br />
-                    <Link to={`/${this.lang()}/contact`}>Let's Talk.</Link>                    
+                <Ending
+                contactLinkText="Let's Talk."
+                link="/work"
+                linkText="Or browse through a few of my work cases"
+            >
+                    Over 10 years of experience.
                 </Ending>
             </div>
         </div>
@@ -295,9 +290,6 @@ const styles = StyleSheet.create({
             width: "100vw",
             height: "69vw",
             maxWidth: 'none'
-        },
-        "@media (min-width: 1025px) and (max-width: 1439px)": {
-            display: 'none'
         }
     },
     trophyHolder: {
@@ -355,6 +347,9 @@ const styles = StyleSheet.create({
             padding: "30px 0 0 0",
             minWidth: "100vw",
             width: "100vw"
+        },
+        "@media (min-width: 1025px) and (max-width: 1439px)": {
+            display: 'none'
         }
     },
     spotifyTitle: {

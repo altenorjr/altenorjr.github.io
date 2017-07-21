@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import withDimensions, { modes, propTypes, is } from './hoc/withDimensions';
+import withDimensions, { propTypes, is } from './hoc/withDimensions';
 
 export default withDimensions(class HorizontalCenter extends PureComponent {
     static propTypes = {

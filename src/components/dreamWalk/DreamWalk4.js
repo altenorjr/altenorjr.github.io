@@ -1,124 +1,54 @@
 import React, { PureComponent } from 'react';
-import { ViewPager, Frame, Track, View } from 'react-view-pager';
 import Flexbox from 'flexbox-react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
-
-import CenteredContent from '../CenteredContent';
-import HorizontalCenter from '../HorizontalCenter';
-import FullSizeContainer from '../FullSizeContainer';
-import Title from '../Title';
+import Logo from '../Logo';
+import Highlight from '../Highlight';
 import DescriptionText from '../DescriptionText';
+import JamBadge from '../JamBadge';
 import Carousel from '../Carousel';
-import withDimensions, { atLeast, atMost, is } from '../hoc/withDimensions';
-import { sparkScrollFactory } from '../Spark';
+import withDimensions, { atMost, is, width } from '../hoc/withDimensions';
 
-import styles from './DreamWalk4.css';
-
-export default sparkScrollFactory(withDimensions(class DreamWalk3 extends PureComponent {
-    render = () => {
-        const noPadding = { padding: 0 };
-
-        const colStyle = Object.assign({
-            textAlign: 'center'
-        }, noPadding);
-
-        return (
-            <Flexbox
-                width="100vw"
-                paddingTop={is('sm', this) ? '75px' : '150px'}
-                paddingBottom={is('sm', this) ? '25px' : '50px'}
-                flexDirection="column"
-                style={{
-                    backgroundColor: "#D2CFCA"
-                }}>
-                <Flexbox
-                    style={{ boxSizing: "border-box" }}
-                    className={styles.text}
-                    flexDirection="column"
-                    alignItems="center"
-                    justifyContent="flex-start"
-                    paddingTop="10"
-                    margin={atLeast('lg', this) ? "50px auto" : "initial"}>
-                    <Title mode="small"
-                        align="left"
-                        margin={atMost('md', this) ? "75px 0 0 0" : 0}
-                        titleStyle={{
-                            width: atMost('md', this) ? '90%' : '100%'
-                        }}>
-                        Product Landing Pages
-                    </Title>
-                    <DescriptionText
-                        size={28}
-                        width="100%"
-                        align="left"
-                        margin="20px 0">
-                        Since it’s recent release, Jam has been the the number one music app in 26 countries on iTunes, including Australia, New Zealand, USA and Canada.
-                    </DescriptionText>
-                </Flexbox>
-                <Flexbox>
-                    {
-                        atMost('md', this) && (
-                            <Carousel
-                                margin={50}
-                                viewsToShow={1.5}
-                                align={0.5}>
-                                <img src="/img/jam-lp-1.png" />
-                                <img src="/img/jam-lp-2.png" />
-                                <img src="/img/jam-lp-3.png" />
-                                <img src="/img/jam-lp-4.png" />
-                                <img src="/img/jam-lp-1.png" />
-                                <img src="/img/jam-lp-2.png" />
-                                <img src="/img/jam-lp-3.png" />
-                                <img src="/img/jam-lp-4.png" />
-                            </Carousel>
-                        )
-                    }
-                    {
-                        atLeast('lg', this) && (
-                            <Flexbox width="90vw" margin="auto" flex="1" justifyContent="space-around">
-                                <img className={styles.img} src="/img/jam-lp-1.png" />
-                                <img className={styles.img} src="/img/jam-lp-2.png" />
-                                <img className={styles.img} src="/img/jam-lp-3.png" />
-                                <img className={styles.img} src="/img/jam-lp-4.png" />
-                            </Flexbox>
-                        )
-                    }
-                </Flexbox>
-                <Flexbox
-                    className={styles.text}
-                    flexDirection="column"
-                    justifyContent="flex-start"
-                    paddingTop="10"
-                    margin="50px auto">
-                    <Title mode="small" margin={atMost('md', this) ? "50px 0 20px 15px" : "50px 0"}>Record Labels</Title>
-                    <Grid fluid style={{ margin: 0 }}>
-                        <Row>
-                            <Col xs={6} md={3} style={{ textAlign: 'center' }}>
-                                <img className={styles.recordLabel} src="/img/jam-logo-tun-e-versal.png" alt="" />
-                            </Col>
-                            <Col xs={6} md={3} style={{ textAlign: 'center' }}>
-                                <img className={styles.recordLabel} src="/img/jam-logo-notown.png" alt="" />
-                            </Col>
-                            <Col xs={6} md={3} style={{ textAlign: 'center' }}>
-                                <img className={styles.recordLabel} src="/img/jam-logo-def-jim.png" alt="" />
-                            </Col>
-                            <Col xs={6} md={3} style={{ textAlign: 'center' }}>
-                                <img className={styles.recordLabel} src="/img/jam-logo-ab.png" alt="" />
-                            </Col>
-                        </Row>
-                    </Grid>
-                </Flexbox>
-                <Flexbox
-                    style={{ boxSizing: "border-box" }}
-                    className={styles.text}
-                    flexDirection="column"
-                    justifyContent="flex-start"
-                    paddingTop="10"
-                    margin={atLeast('lg', this) ? "auto" : "20px auto"}>
-                    <Title mode="small" margin={atMost('md', this) ? "0 0 20px 15px" : "0 0 50px 15px"}>In-App Badges</Title>
-                    <img src="/img/jam-inapp-badges.png" className={styles.inappBadges} alt="" />
-                </Flexbox>
-            </Flexbox>
-        );
+@withDimensions
+export default class DreamWalk5 extends PureComponent {
+    ipad = { height: '100vh' }
+    img = {
+        width: '90%'
     }
-}))
+    render = () => (
+        <Flexbox
+            flexDirection="column"
+            alignItems="center"
+            paddingTop={is('sm', this) ? '75px' : '125px'}
+            paddingBottom={is('sm', this) ? '25px' : '50px'}
+            width="100vw"
+            style={{
+                boxSizing: "box-border"
+            }}>
+            <Logo src="/img/asialinks-logo-1.png" />
+            <Highlight
+                line1="JAM for iPhone:"
+                line2="Become a Rockstar!"
+                margin={`0 0 ${atMost('md', this) ? 20 : 50} 0`}
+                invert={true} />
+            <JamBadge lightMode={false} />
+            <DescriptionText>
+                Since it’s recent release, Jam has been the the number one music app in 26 countries on iTunes, including Australia, New Zealand, USA and Canada.
+            </DescriptionText>
+            <img src="/img/asialinks-ipad.png" style={this.ipad} alt="" />
+            <Carousel
+                margin={atMost('md', this) ? 20 : 50}
+                viewsToShow={atMost('sm', this) ? 1.5 : (width(this) / 270) - 2}
+                align={atMost('md', this) ? 0.5 : 0.75}>
+                <img alt="" style={this.img} src="/img/asialinks-lp-1.png" />
+                <img alt="" style={this.img} src="/img/asialinks-lp-2.png" />
+                <img alt="" style={this.img} src="/img/asialinks-lp-3.png" />
+                <img alt="" style={this.img} src="/img/asialinks-lp-4.png" />
+                <img alt="" style={this.img} src="/img/asialinks-lp-5.png" />
+                <img alt="" style={this.img} src="/img/asialinks-lp-1.png" />
+                <img alt="" style={this.img} src="/img/asialinks-lp-2.png" />
+                <img alt="" style={this.img} src="/img/asialinks-lp-3.png" />
+                <img alt="" style={this.img} src="/img/asialinks-lp-4.png" />
+                <img alt="" style={this.img} src="/img/asialinks-lp-5.png" />                
+            </Carousel>            
+        </Flexbox>
+    )
+}

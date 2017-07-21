@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
 import Flexbox from 'flexbox-react';
 
-import withDimensions, { propTypes, is } from './hoc/withDimensions';
+import withDimensions from './hoc/withDimensions';
 
 import styles from './TwoColumns.css'
 
