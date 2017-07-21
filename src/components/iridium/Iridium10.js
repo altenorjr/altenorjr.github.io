@@ -1,13 +1,12 @@
 import React, { PureComponent } from 'react';
-import { withRouter } from 'react-router-dom'
 import Flexbox from 'flexbox-react';
 import Title from '../Title';
 import Carousel from '../Carousel';
 import DescriptionText from '../DescriptionText';
 import withDimensions, { atLeast, atMost, width } from '../hoc/withDimensions';
-import { sparkScrollFactory } from '../Spark';
 
-export default sparkScrollFactory(withRouter(withDimensions(class Iridium10 extends PureComponent {
+@withDimensions
+export default class Iridium10 extends PureComponent {
     images = [
         "/img/iridium-lps-1.png",
         "/img/iridium-lps-2.png" ,
@@ -71,4 +70,4 @@ export default sparkScrollFactory(withRouter(withDimensions(class Iridium10 exte
             </Flexbox>
         );
     }
-})))
+}

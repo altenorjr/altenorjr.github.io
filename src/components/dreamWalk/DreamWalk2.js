@@ -12,16 +12,26 @@ import { sparkScrollFactory, SparkScroll } from '../Spark';
 
 import styles from './DreamWalk2.css';
 
-export default sparkScrollFactory(withDimensions(class DreamWalk2 extends PureComponent {
+@sparkScrollFactory
+@withDimensions
+export default class DreamWalk2 extends PureComponent {
     static propTypes = {
         setTopBarLightMode: PropTypes.func.isRequired
+    }    
+    
+    state = {
+        loadingVideo: true
     }
 
     onVideoReady = (event) => {
         this.videoPlayer = event.target;
         this.videoPlayer.setVolume(0);
-        // this.videoPlayer.playVideo();
-        // this.videoPlayer.pauseVideo();
+        this.videoPlayer.playVideo();
+        setTimeout(() => {
+            this.videoPlayer.pauseVideo();
+
+            this.setState(() => ({ loadingVideo: false }));
+        }, 300);
     }
 
     onVideoEnd = (event) => {
@@ -37,9 +47,13 @@ export default sparkScrollFactory(withDimensions(class DreamWalk2 extends PureCo
     iphoneBoxHeight = () => this.iphoneHeight() - this.iphoneHeightOffset();
     iphoneBoxHeightOffset = () => this.frameHeight() - this.iphoneHeightOffset();
 
-    playVideo = (play) => {
-        console.log(`Video ${play ? 'played' : 'paused'}`);
-        this.props.setTopBarLightMode(play);
+    playVideo = (play, up) => {
+        if (this.state.loadingVideo) {
+            return;
+        }
+
+        this.props.setTopBarLightMode(!play && up);
+        
         this.videoPlayer && this.videoPlayer[`${play ? 'play' : 'pause'}Video`]();
     }
 
@@ -56,12 +70,12 @@ export default sparkScrollFactory(withDimensions(class DreamWalk2 extends PureCo
                         className={styles.video}
                         timeline={{
                             [`topBottom+1`]: {
-                                onDown: () => this.playVideo(true),
-                                onUp: () => this.playVideo(false)
+                                onDown: () => this.playVideo(true, false),
+                                onUp: () => this.playVideo(false, true)
                             },
                             [`bottomTop`]: {
-                                onDown: () => this.playVideo(false),
-                                onUp: () => this.playVideo(true)
+                                onDown: () => this.playVideo(false, false),
+                                onUp: () => this.playVideo(true, true)
                             }
                         }}>
                         <Youtube
@@ -121,4 +135,4 @@ export default sparkScrollFactory(withDimensions(class DreamWalk2 extends PureCo
             </div>
         </Flexbox>
     )
-}))
+}

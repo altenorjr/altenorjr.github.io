@@ -6,11 +6,9 @@ import Title from '../Title';
 import DescriptionText from '../DescriptionText';
 import Carousel from '../Carousel';
 import withDimensions, { atLeast, atMost, is } from '../hoc/withDimensions';
-import { sparkScrollFactory } from '../Spark';
 
 import styles from './DreamWalk3.css';
 
-@sparkScrollFactory
 @withDimensions
 export default class DreamWalk3 extends PureComponent {
     images = [

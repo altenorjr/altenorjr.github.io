@@ -21,10 +21,8 @@ export default class DreamWalk extends PureComponent {
     componentDidMount = () => {
         window.scrollTo(0, 0);
 
-        this.setTopBarLightMode(true);
+        this.props.setTopBarLightMode(true);
     }
-
-    setTopBarLightMode = (mode) => this.props.setTopBarLightMode(mode);
 
     componentWillUnmount = () => window.scrollTo(0, 0);
 

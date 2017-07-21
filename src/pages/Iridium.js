@@ -46,32 +46,6 @@ export default class Iridium extends PureComponent {
             >
                 Over 10 years of experience.
             </Ending>
-            {/*
-        <div className={styles.fullpage}>
-            <Fullpage onSlideChangeStart={this.onSlideChanged} slides={[
-                <Slide>
-                </Slide>,
-                <Slide>
-                </Slide>,
-                <Slide>
-                </Slide>,
-                <Slide>
-                </Slide>,
-                <Slide>
-                </Slide>,
-                <Slide>
-                </Slide>,
-                <Slide>
-                </Slide>,
-                <Slide>
-                </Slide>,
-                <Slide>
-                </Slide>,
-                <Slide>
-                </Slide>
-            ]} />
-        </div>
-        */}
         </Flexbox>
     )
 }

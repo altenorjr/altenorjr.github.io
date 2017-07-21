@@ -6,12 +6,12 @@ import ThreeColumns from '../ThreeColumns';
 import Titan from '../Titan';
 import Highlight from '../Highlight';
 import withDimensions, { is, atLeast } from '../hoc/withDimensions';
-import { sparkScrollFactory } from '../Spark';
 import styles from './Iridium1.css';
 
 import Flexbox from 'flexbox-react';
 
-export default sparkScrollFactory(withDimensions(class Iridium1 extends PureComponent {
+@withDimensions
+export default class Iridium1 extends PureComponent {
     static propTypes = {
     }
 
@@ -91,4 +91,4 @@ export default sparkScrollFactory(withDimensions(class Iridium1 extends PureComp
             </Flexbox>
         );
     }
-}))
+}
