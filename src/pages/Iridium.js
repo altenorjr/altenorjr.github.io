@@ -21,7 +21,7 @@ import Iridium7 from '../components/iridium/Iridium7';
 import Iridium8 from '../components/iridium/Iridium8';
 import Iridium9 from '../components/iridium/Iridium9';
 import Iridium10 from '../components/iridium/Iridium10';
-import Iridium20 from '../components/iridium/Iridium20';
+import Ending from '../components/Ending';
 
 export default withDimensions(class Iridium extends PureComponent {
     static propTypes = {
@@ -49,42 +49,44 @@ export default withDimensions(class Iridium extends PureComponent {
         setTimeout(() => this.props.setTopBarLightMode(isLight), 150);
     }
 
+    componentWillUnmount = () => window.scrollTo(0, 0);
+
     render = () => (
         <Flexbox flexDirection="column">
             <Iridium1
                 ref="i1"
-                timeline={{
+                /*timeline={{
                     'bottomBottom+100': {
                         onDown: (o) => {
                             scrollTo(this.refs.i2);
                             // this.props.setTopBarLightMode(true);
                         }
                     }
-                }} />
+                }} */ />
             <Iridium2
                 ref="i2"
-                timeline={{
+                /*timeline={{
                     'topTop-100': {
                         onUp: () => {
                             scrollTo(this.refs.i1);
                             // this.props.setTopBarLightMode(true);
                         }
                     }
-                }} />
+                }} */ />
             <Iridium3
                 ref="i3"
-                timeline={{
+                /*timeline={{
                     'bottomBottom+100': {
                         onDown: () => {
                             scrollTo(this.refs.i4);
                             this.props.setTopBarLightMode(true);
                         }
                     }
-                }} />
+                }} */ />
             <Iridium4
                 ref="i4"
                 setTopBarLightMode={this.props.setTopBarLightMode}
-                timeline={{
+                /*timeline={{
                     'topTop-100': {
                         onUp: () => {
                             scrollTo(this.refs.i3);
@@ -97,22 +99,36 @@ export default withDimensions(class Iridium extends PureComponent {
                             this.props.setTopBarLightMode(false);
                         }
                     }
-                }} />
+                }} */ />
             <Iridium5
-                ref="i5" />
+                ref="i5" 
+                /*timeline={{
+                    'topTop-100': {
+                        onUp: () => {
+                            scrollTo(this.refs.i4);
+                            this.props.setTopBarLightMode(false);
+                        }
+                    },
+                    'bottomBottom+100': {
+                        onDown: () => {
+                            scrollTo(this.refs.i6);
+                            this.props.setTopBarLightMode(false);
+                        }
+                    }
+                }} */ />
             <Iridium6
                 ref="i6"
-                timeline={{
+                /*timeline={{
                     'bottomBottom+100': {
                         onDown: () => {
                             scrollTo(this.refs.i7);
                             this.props.setTopBarLightMode(true);
                         }
                     }
-                }} />
+                }} */ />
             <Iridium7 
                 ref="i7" 
-                timeline={{
+                /*timeline={{
                     'topTop-100': {
                         onUp: () => {
                             scrollTo(this.refs.i6);
@@ -125,10 +141,10 @@ export default withDimensions(class Iridium extends PureComponent {
                             this.props.setTopBarLightMode(false);
                         }
                     }
-                }} />
+                }} */ />
             <Iridium8 
                 ref="i8" 
-                timeline={{
+                /*timeline={{
                     'topTop-100': {
                         onUp: () => {
                             scrollTo(this.refs.i7);
@@ -141,10 +157,10 @@ export default withDimensions(class Iridium extends PureComponent {
                             this.props.setTopBarLightMode(true);
                         }
                     }
-                }} />
+                }} */ />
             <Iridium9 
                 ref="i9" 
-                timeline={{
+                /*timeline={{
                     'topTop-100': {
                         onUp: () => {
                             scrollTo(this.refs.i8);
@@ -157,33 +173,9 @@ export default withDimensions(class Iridium extends PureComponent {
                             this.props.setTopBarLightMode(false);
                         }
                     }
-                }} />
-            <Iridium10 
-                ref="i10" 
-                timeline={{
-                    'topTop-100': {
-                        onUp: () => {
-                            scrollTo(this.refs.i9);
-                            this.props.setTopBarLightMode(true);
-                        }
-                    },
-                    'bottomBottom+100': {
-                        onDown: () => {
-                            scrollTo(this.refs.i20);
-                            // this.props.setTopBarLightMode(false);
-                        }
-                    }
-                }} />
-            <Iridium20  
-                ref="i20" 
-                timeline={{
-                    'topTop-100': {
-                        onUp: () => {
-                            scrollTo(this.refs.i10);
-                            // this.props.setTopBarLightMode(true);
-                        }
-                    }
-                }} />
+                }} */ />
+            <Iridium10 ref="i10" />
+            <Ending />
             {/*
         <div className={styles.fullpage}>
             <Fullpage onSlideChangeStart={this.onSlideChanged} slides={[

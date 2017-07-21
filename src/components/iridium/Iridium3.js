@@ -3,7 +3,7 @@ import Flexbox from 'flexbox-react';
 import { Grid, Col, Row } from 'react-flexbox-grid';
 import classnames from 'classnames';
 
-import SmallTitle from '../SmallTitle';
+import Title from '../Title';
 import DescriptionText from '../DescriptionText';
 import TwoColumns from '../TwoColumns';
 import withDimensions, { is, atLeast, atMost, width } from '../hoc/withDimensions';
@@ -29,12 +29,12 @@ export default sparkScrollFactory(withDimensions(class Iridium3 extends PureComp
                 width="50vw"
                 margin="0"
                 minWidth={atLeast('lg', this) ? "720px" : "100vw"}>
-                <SmallTitle
+                <Title mode="small"
                     width="90vw"
                     margin={atLeast('lg', this) ? '0' : "0 0 0 15px"}
                     align="left">
                     Branding
-                </SmallTitle>
+                </Title>
                 <DescriptionText
                     align="left"
                     size={23}

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import Flexbox from 'flexbox-react';
 import { Grid, Col, Row } from 'react-flexbox-grid';
 import classnames from 'classnames';
-import SmallTitle from '../SmallTitle';
+import Title from '../Title';
 import withDimensions, { is, atLeast, atMost } from '../hoc/withDimensions';
 import { sparkScrollFactory } from '../Spark';
 
@@ -18,14 +18,14 @@ export default sparkScrollFactory(withDimensions(class Iridium6 extends PureComp
                 boxSizing: 'border-box',
                 backgroundColor: '#FCF141'
             }}>
-            <SmallTitle
+            <Title mode="small"
                 align="left"
                 margin={atLeast('lg', this) ? '0 0 50px 0' : '0 0 20px 0'}
                 titleStyle={{
                     width: atLeast('lg', this) ? '75vw' : '80vw'
                 }}>
                 Approved Concept
-            </SmallTitle>
+            </Title>
             <img 
                 src="/img/iridium-logo-2-approved.png" 
                 alt=""

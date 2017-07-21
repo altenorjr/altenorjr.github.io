@@ -19,10 +19,18 @@ class LanguageSwitch extends PureComponent {
     render = () => {
         return (
             <div>
-                <NavLink style={{ color: this.props.lightMode ? '#FFF' : '#000' }} to="/en" onClick={this.selectLanguage} className={styles.languageItem} activeClassName={styles.languageActive}>EN</NavLink>
+                <NavLink
+                    to="/en" 
+                    onClick={this.selectLanguage} 
+                    className={styles.languageItem} 
+                    activeClassName={styles.languageActive}
+                    style={{
+                        color: this.props.lightMode ? '#FFF' : '#000'
+                    }}>
+                    EN
+                </NavLink>
                 &nbsp;&nbsp;
-                <NavLink style={{ color: this.props.lightMode ? '#FFF' : '#000' }} to="/pt" onClick={this.selectLanguage} className=
-                    {styles.languageItem} activeClassName={styles.languageActive}>PT</NavLink>
+                <NavLink style={{ color: this.props.lightMode ? '#FFF' : '#000' }} to="/pt" onClick={this.selectLanguage} className={styles.languageItem} activeClassName={styles.languageActive}>PT</NavLink>
             </div>
         );
     }

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import Flexbox from 'flexbox-react';
 import { Grid, Col, Row } from 'react-flexbox-grid';
 import classnames from 'classnames';
-import SmallTitle from '../SmallTitle';
+import Title from '../Title';
 import DescriptionText from '../DescriptionText';
 import Fade from '../Fade';
 import withDimensions, { is, atLeast, atMost } from '../hoc/withDimensions';
@@ -25,7 +25,7 @@ export default sparkScrollFactory(withDimensions(class Iridium7 extends PureComp
                 backgroundPosition: 'center center',
                 overflow: 'hidden'
             }}>
-            <SmallTitle
+            <Title mode="small"
                 align="left"
                 lightMode={true}
                 margin={atLeast('lg', this) ? '150px auto 0 auto' : '75px auto 0 auto'}
@@ -33,7 +33,7 @@ export default sparkScrollFactory(withDimensions(class Iridium7 extends PureComp
                     width: atLeast('lg', this) ? '50vw' : '90vw'
                 }}>
                 Final Version
-                </SmallTitle>
+                </Title>
             <DescriptionText
                 align="left"
                 size={20}

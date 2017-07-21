@@ -20,10 +20,6 @@ import styles from './DreamWalk1.css';
 import Flexbox from 'flexbox-react';
 
 export default sparkScrollFactory(withDimensions(class DreamWalk1 extends PureComponent {
-    static propTypes = {
-        setTopBarLightMode: PropTypes.func.isRequired
-    }
-
     render = () => {
         return (
             <Flexbox

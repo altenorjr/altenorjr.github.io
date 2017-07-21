@@ -1,3 +1,4 @@
+import { Presets, LookRoot, Plugins } from 'react-look'
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -13,17 +14,22 @@ import styles from './index.css';
 
 import MenuBar from './components/MenuBar';
 
+const config = Presets["react-dom"];
+config.plugins.push(Plugins.friendlyClassName);
+
 class App extends Component {
   render() {
     return (
-      <MuiThemeProvider>
-        <BrowserRouter>
-          <div>
-            <Route path="/" exact render={() => <Redirect to="/en" />} />
-            <Route path="/:lang" component={Master} />
-          </div>
-        </BrowserRouter>
-      </MuiThemeProvider>
+      <LookRoot config={config}>
+        <MuiThemeProvider>
+          <BrowserRouter>
+            <div>
+              <Route path="/" exact render={() => <Redirect to="/en" />} />
+              <Route path="/:lang" component={Master} />
+            </div>
+          </BrowserRouter>
+        </MuiThemeProvider>
+      </LookRoot>
     );
   }
 }

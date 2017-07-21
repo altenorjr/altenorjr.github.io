@@ -4,74 +4,69 @@ import { Grid, Col, Row } from 'react-flexbox-grid';
 import { Fullpage, Slide } from 'fullpage-react';
 import { Link, withRouter } from 'react-router-dom';
 import classnames from 'classnames';
+import look from 'react-look';
+import newless from 'newless';
 import Flexbox from 'flexbox-react';
 
 import { sparkScrollFactory } from '../components/Spark';
-import withDimensions, { height, scrollTo } from '../components/hoc/withDimensions';
+import withDimensions, { height, atMost, scrollTo } from '../components/hoc/withDimensions';
 import DescriptionText from '../components/DescriptionText';
 import WorkCase from '../components/WorkCase';
-import Over10Years from '../components/Over10Years';
+import Ending from '../components/Ending';
+import Cliffhanger from '../components/Cliffhanger';
 import Contact from './Contact';
 
 import styles from './Work.css';
 
+const LookWorkCase = look(WorkCase);
+
 const SCFlexbox = sparkScrollFactory(Flexbox);
 
-export default withRouter(withDimensions(class Work extends PureComponent {
+@withRouter
+@withDimensions
+export default class Work extends PureComponent {
     static propTypes = {
         setTopBarLightMode: PropTypes.func.isRequired
     }
 
     onSlideChanged = (name, props, state, newState) => {
-        if (window.outerWidth >= 1024) {
-            return;
-        }
-
-        setTimeout(() => this.props.setTopBarLightMode(!!this.workCases()[newState.activeSlide].light), 150);
     }
 
     componentDidMount = () => {
-        window.scrollTo(0, 0);
-
-        setTimeout(() => this.props.setTopBarLightMode(false), 150);
+        this.props.setTopBarLightMode(false);
     }
+
+    componentWillUnmount = () => window.scrollTo(0, 0);
 
     render = () => {
         const lang = this.props.location.pathname.split('/')[1];
 
-        // const slides = this.workCases().slice(1, 5).map((item) => <Slide><WorkCase {...item} /></Slide>);
-
-        // slides.push(
-        //     <Slide>
-        //         <Over10Years />
-        //     </Slide>
-        // );
-
         return (
-            <div>
-                <SCFlexbox
+            <div className={this.props.className}>
+                <Flexbox
                     ref="w0"
                     flexDirection="column"
                     justifyContent="center"
                     alignItems="center"
                     width="100vw"
-                    height="100vh"
-                    timeline={{
-                        'bottomBottom+100': {
-                            onDown: () => scrollTo(height(this))
-                        }
-                    }}>
+                    height="100vh">
                     <h1 className={styles.title}>Work Cases</h1>
                     <DescriptionText className={styles.subtitle}>
                         Before the commercials, big event booths, national sport competitions, extensive line of products and
                     </DescriptionText>
                     <img src='/img/arrow-down.png' className={styles.arrowDown} alt="Scroll Down" />
-                </SCFlexbox>
+                </Flexbox>
                 {
-                    this.workCases.map((props, i) => <WorkCase key={i} {...props}/>)
-                }
-            </div>
+                    this.workCases.map((props, i) => {
+                        props.lightMode = atMost('md', this) && props.lightMode;
 
+                        return (
+                            <LookWorkCase key={i} {...props} />
+                        );
+                    })
+                }
+                <Ending />
+            </div>
         );
     }
 
@@ -89,7 +84,7 @@ export default withRouter(withDimensions(class Work extends PureComponent {
         type: "UX/Branding",
         title: "Made with Iridium",
         desc: "Iridium Labs is a new and uprising supplement brand based in Sao Paulo, Brazil. I was involved in its birth, coming up with product websites, app prototypes and marketing",
-        light: false
+        lightMode: false
     },
     {
         i: 2,
@@ -105,7 +100,7 @@ export default withRouter(withDimensions(class Work extends PureComponent {
         type: "UI/UX",
         title: "App Gallore",
         desc: "DreamWalk is a Melbourne-based app development company. I had a blast being their lead UI designer for a year or so back in 2011. After that, we still managed to work together on a few killer apps. Oh, the memories!",
-        light: true
+        lightMode: true
     },
     {
         i: 3,
@@ -121,7 +116,7 @@ export default withRouter(withDimensions(class Work extends PureComponent {
         type: "Branding",
         title: "Everman",
         desc: "DreamWalk is a Melbourne-based app development company. I had a blast being their lead UI designer for a year or so back in 2011. After that, we still managed to work together on a few killer apps. Oh, the memories!",
-        light: true
+        lightMode: true
     },
     {
         i: 4,
@@ -137,6 +132,6 @@ export default withRouter(withDimensions(class Work extends PureComponent {
         type: "UI/UX",
         title: "Alphanation",
         desc: "DreamWalk is a Melbourne-based app development company. I had a blast being their lead UI designer for a year or so back in 2011. After that, we still managed to work together on a few killer apps. Oh, the memories!",
-        light: true
+        lightMode: true
     }]
-}));
+};

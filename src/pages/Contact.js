@@ -38,7 +38,7 @@ export default class Contact extends PureComponent {
                     </Row>
                 </Grid>
             </div>
-            <SocialIcons lightMode className={styles.social} />
+            <SocialIcons visible lightMode className={styles.social} />
         </div>
     )
 }

@@ -1,4 +1,4 @@
-.slide1 {
+/* .slide1 {
 }
 
 .subtitle {
@@ -38,9 +38,6 @@
 
 .slide2 > div {
     width: 28%;
-    position: absolute;
-    top: 90px;
-    right: 50px;
     padding: 60px 60px 0 60px;
 }
 
@@ -90,4 +87,4 @@
     .slide2 > div > p {
         line-height: 1em;
     }
-}
+} */

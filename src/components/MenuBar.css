@@ -4,7 +4,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    overflow: hidden;
     z-index: 9;
     padding-top: 50px;
 }
@@ -43,44 +42,6 @@
     right: 150px;
 }
 
-.mobileLanguageSwitch {
-    margin-top: 50px;
-    display: none;
-}
-
-.menu {
-    text-align: center;
-    display: none;
-    width: 90%;
-    margin: 25% auto;
-}
-
-.menuIsOpen {
-    display: block;
-}
-
-.menuItem {
-    margin-top: 0px;
-}
-
-.menuItem a {
-    text-decoration: none;
-    color: #000;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 42px;
-}
-
-.social {
-    text-align: center;
-    margin-top: 250px;
-}
-
-.socialLink {
-    width: 56px;
-    height: 56px;
-}
-
 @media only screen and (max-device-width: 1023px) {
     .menuBar {
         padding-top: 0;
@@ -97,29 +58,4 @@
         top: 5px;
         display: block;
     }
-
-    .mainLanguageSwitch {
-        display: none;
-    }
-
-    .mobileLanguageSwitch {
-        display: block;
-    }
-
-    .menu {
-        width: 100%;
-        margin: 20% auto;
-    }
-
-    .menuItem {
-        margin-top: 15px;
-    }
-
-    .language {
-        display: block;
-    }
-
-    .social {
-        margin-top: 30px;
-    }
-}
+} 

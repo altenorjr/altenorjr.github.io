@@ -10,7 +10,11 @@
     color: #000;
 }
 
-.languageActive {
+.languageActive, 
+.languageActive:link,
+.languageActive:active,
+.languageActive:visited,
+.languageActive:hover {
     font-weight: 700;
     text-decoration: underline;
 }

@@ -25,7 +25,9 @@ export default withRouter(withDimensions(class Menu extends PureComponent {
         toggleMenu: PropTypes.func.isRequired
     }
 
-    toggleMenu = () => this.props.toggleMenu()
+    toggleMenu = () => {
+        this.props.toggleMenu();
+    }
 
     render = () => {
         const lang = this.props.match.params.lang;

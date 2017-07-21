@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Grid, Col, Row } from 'react-flexbox-grid';
 import FullSizeContainer from '../FullSizeContainer';
 import CenteredContent from '../CenteredContent';
-import SmallTitle from '../SmallTitle';
+import Title from '../Title';
 
 import styles from './DreamWalk5.css';
 
@@ -20,7 +20,7 @@ export default class DreamWalk5 extends PureComponent {
                     widthUnit="%"
                     height={500}
                     heightSm={400}>
-                    <SmallTitle>Record Labels</SmallTitle>
+                    <Title mode="small">Record Labels</Title>
                     <Grid fluid style={grid}>
                         <Row>
                             <Col style={col} xs={6} md={3}>
@@ -37,7 +37,7 @@ export default class DreamWalk5 extends PureComponent {
                             </Col>
                         </Row>
                     </Grid>
-                    <SmallTitle margin={50}>In-App Badges</SmallTitle>
+                    <Title mode="small" margin={50}>In-App Badges</Title>
                     <Grid fluid style={badges}>
                         <Row>
                             <Col xs={12} style={{}}>

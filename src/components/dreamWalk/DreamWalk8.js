@@ -7,7 +7,7 @@ import CenteredContent from '../CenteredContent';
 import Logo from '../Logo';
 import Highlight from '../Highlight';
 import DescriptionText from '../DescriptionText';
-import SmallTitle from '../SmallTitle';
+import Title from '../Title';
 import HorizontalCenter from '../HorizontalCenter';
 import VerticalAlign from '../VerticalAlign';
 import Carousel from '../Carousel';
@@ -77,10 +77,10 @@ export default sparkScrollFactory(withDimensions(class DreamWalk8 extends PureCo
                             lightMode={true}
                             align={is('sm', this) ? 'center' : 'left'}
                             margin="10px 0 0 0" />
-                        <SmallTitle
+                        <Title mode="small"
                             lightMode={true}
                             align={is('sm', this) ? 'center' : 'left'}
-                            margin="10px 0 10px 0">#1 Music App Worldwide</SmallTitle>
+                            margin="10px 0 10px 0">#1 Music App Worldwide</Title>
                         <DescriptionText
                             lightMode={true}
                             align={is('sm', this) ? 'center' : 'left'}

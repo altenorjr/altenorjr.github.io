@@ -1,7 +1,8 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import scrollToWithAnimation from 'scrollto-with-animation';
+import newless from 'newless';
 
 const calculate = () => ({
     width: window.innerWidth,
@@ -12,8 +13,8 @@ const calculate = () => ({
     portrait: window.innerWidth < window.innerHeight
 });
 
-const withDimensions = (WrappedComponent) => {
-    return class DimensionAware extends PureComponent {
+const withDimensions = (WrappedComponent) => newless(
+    class DimensionAware extends Component {
         state = calculate()
 
         update = () => this.setState(calculate);
@@ -40,9 +41,15 @@ const withDimensions = (WrappedComponent) => {
 
         componentWillUnmount = () => window.removeEventListener("optimizedResize", this.update);
 
-        render = () => <WrappedComponent dimensions={this.state} {...this.props} />
-    };
-};
+        render() {
+            const forwardProps = Object.assign({}, this.props);
+
+            return (
+                <WrappedComponent dimensions={this.state} {...forwardProps} />
+            );
+        }
+    }
+);
 
 export default withDimensions;
 
@@ -70,7 +77,7 @@ export const width = (self) => self.props.dimensions.width;
 
 export const height = (self) => self.props.dimensions.height;
 
-export const scrollTo = (ref, duration = 300) => {
+export const scrollTo = (ref, duration = 500) => {
     let top = ref;
 
     if (typeof ref !== 'number') {
@@ -83,5 +90,5 @@ export const scrollTo = (ref, duration = 300) => {
         top = el.offsetTop;
     }
 
-    scrollToWithAnimation(document.body, 'scrollTop', top, duration, 'easeOutSine');
+    scrollToWithAnimation(document.body, 'scrollTop', top, duration, 'easeInOutQuad');
 }

@@ -4,6 +4,10 @@
     font-size: 12px;
 }
 
+.big {
+    font-size: 50px;
+}
+
 .lightMode {
     color: #FFF;
 }

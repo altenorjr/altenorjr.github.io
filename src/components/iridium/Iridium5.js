@@ -10,7 +10,7 @@ export default sparkScrollFactory(withDimensions(class Iridium5 extends PureComp
     render = () => (
         <Flexbox
             width="100vw"
-            height={atLeast('lg', this) ? '75vh' : '100vh'}
+            height="100vh"
             flexDirection={atLeast('lg', this) ? 'row' : 'column'}
             justifyContent={atLeast('lg', this) ? 'space-around' : 'space-around'}
             alignItems="center">

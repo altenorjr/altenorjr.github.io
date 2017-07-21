@@ -6,7 +6,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import CenteredContent from '../CenteredContent';
 import HorizontalCenter from '../HorizontalCenter';
 import FullSizeContainer from '../FullSizeContainer';
-import SmallTitle from '../SmallTitle';
+import Title from '../Title';
 import DescriptionText from '../DescriptionText';
 import Carousel from '../Carousel';
 import withDimensions, { atLeast, atMost, is } from '../hoc/withDimensions';
@@ -39,14 +39,14 @@ export default sparkScrollFactory(withDimensions(class DreamWalk3 extends PureCo
                     justifyContent="flex-start"
                     paddingTop="10"
                     margin={atLeast('lg', this) ? "50px auto" : "initial"}>
-                    <SmallTitle
+                    <Title mode="small"
                         align="left"
                         margin={atMost('md', this) ? "75px 0 0 0" : 0}
                         titleStyle={{
                             width: atMost('md', this) ? '90%' : '100%'
                         }}>
                         Product Landing Pages
-                    </SmallTitle>
+                    </Title>
                     <DescriptionText
                         size={28}
                         width="100%"
@@ -90,7 +90,7 @@ export default sparkScrollFactory(withDimensions(class DreamWalk3 extends PureCo
                     justifyContent="flex-start"
                     paddingTop="10"
                     margin="50px auto">
-                    <SmallTitle margin={atMost('md', this) ? "50px 0 20px 15px" : "50px 0"}>Record Labels</SmallTitle>
+                    <Title mode="small" margin={atMost('md', this) ? "50px 0 20px 15px" : "50px 0"}>Record Labels</Title>
                     <Grid fluid style={{ margin: 0 }}>
                         <Row>
                             <Col xs={6} md={3} style={{ textAlign: 'center' }}>
@@ -115,7 +115,7 @@ export default sparkScrollFactory(withDimensions(class DreamWalk3 extends PureCo
                     justifyContent="flex-start"
                     paddingTop="10"
                     margin={atLeast('lg', this) ? "auto" : "20px auto"}>
-                    <SmallTitle margin={atMost('md', this) ? "0 0 20px 15px" : "0 0 50px 15px"}>In-App Badges</SmallTitle>
+                    <Title mode="small" margin={atMost('md', this) ? "0 0 20px 15px" : "0 0 50px 15px"}>In-App Badges</Title>
                     <img src="/img/jam-inapp-badges.png" className={styles.inappBadges} alt="" />
                 </Flexbox>
             </Flexbox>

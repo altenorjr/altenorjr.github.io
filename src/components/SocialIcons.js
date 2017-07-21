@@ -11,9 +11,7 @@ export default class SocialIcons extends PureComponent {7
     }
 
     render = () => (
-        <div style={{
-            display: this.props.visible ? 'block' : 'none'
-        }} className={classnames(this.props.className, styles.social, styles.center)}>
+        <div className={classnames(this.props.className, styles.social, styles.center)}>
             <a onClick={this.toggleMenu} href="https://facebook.com" target="_blank">
                 <img src={`/img/logo-fb${this.props.lightMode ? '-white' : ''}.png`} alt="Facebook" className={styles.socialLink} />
             </a>

@@ -3,6 +3,14 @@
   box-sizing: border-box;
 }
 
+* {
+  letter-spacing: 0.5px;
+}
+
+html {
+  background-color: #FDF141; 
+  /* background: linear-gradient(to bottom, #ffffff 0%,#fcfcfc 50%,#fdf141 51%,#fdf141 100%) */
+}
 
 body {
   margin: 0;
@@ -10,10 +18,21 @@ body {
   font-family: 'Gotham';
   width: 100%;
   overflow-x: hidden;
+  background-color: #FFF;
+}
+
+a, a:active, a:hover, a:visited {
+  text-decoration: none;
+  color: inherit;
 }
 
 .center {
   text-align: center;
+}
+
+img[src="/img/arrow-down.png"] {
+  width: 56px;
+  height: 56px;
 }
 
 strong {

@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import Flexbox from 'flexbox-react';
 import CenteredContent from '../CenteredContent';
 import Loud from '../Loud';
-import SmallTitle from '../SmallTitle';
+import Title from '../Title';
 import Carousel from '../Carousel';
 import DescriptionText from '../DescriptionText';
 import withDimensions, { is, atLeast, atMost, width } from '../hoc/withDimensions';
@@ -25,9 +25,9 @@ export default sparkScrollFactory(withRouter(withDimensions(class Iridium10 exte
                 <Flexbox
                     flexDirection="column"
                     width={atLeast('lg', this) ? "50vw" : "90vw"}>
-                    <SmallTitle>
+                    <Title mode="small">
                         UI, UX and Website Design
-                    </SmallTitle>
+                    </Title>
                     <DescriptionText
                         width="100%"
                         size={23}

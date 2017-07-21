@@ -1,23 +1,25 @@
 import React, { PureComponent } from 'react';
+import look, { StyleSheet } from 'react-look';
+import newless from 'newless';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import { Grid, Col, Row } from 'react-flexbox-grid';
-import cx from 'classnames';
 import Flexbox from 'flexbox-react';
 
 import MediaQuery from 'react-responsive';
 import { Link, withRouter } from 'react-router-dom';
 
-import withDimensions, { is, scrollTo, height, atLeast } from './hoc/withDimensions';
+import withDimensions, { is, scrollTo, height, atLeast, atMost } from './hoc/withDimensions';
 import { sparkScrollFactory } from './Spark';
-import SmallTitle from './SmallTitle';
+import Title from './Title';
 import Highlight from './Highlight';
 import DescriptionText from './DescriptionText';
 
-import styles from './WorkCase.css';
+const cx = StyleSheet.combineStyles;
 
-const SCFlexbox = sparkScrollFactory(Flexbox);
-export default withRouter(sparkScrollFactory(withDimensions(class WorkCase extends PureComponent {
+@withDimensions
+@withRouter
+export default class WorkCase extends PureComponent {
     static propTypes = {
         i: PropTypes.number.isRequired,
         id: PropTypes.string.isRequired,
@@ -32,11 +34,12 @@ export default withRouter(sparkScrollFactory(withDimensions(class WorkCase exten
         type: PropTypes.string.isRequired,
         title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
         desc: PropTypes.string.isRequired,
-        light: PropTypes.bool
+        lightMode: PropTypes.bool
     };
 
     static defaultProps = {
-        bgSize: 'contain'
+        bgSize: 'contain',
+        lightMode: false
     }
 
     nextPanel = () => height(this) * (this.props.i + 1);
@@ -44,49 +47,41 @@ export default withRouter(sparkScrollFactory(withDimensions(class WorkCase exten
 
     render() {
         return (
-
-            <SCFlexbox
-                width="100vw"
-                height="100vh"
-                className={styles.case}
-                timeline={{
-                    'bottomBottom+100': {
-                        onDown: () => scrollTo(this.nextPanel())
-                    },
-                    'topTop-100': {
-                        onUp: () => scrollTo(this.prevPanel())
-                    }
+            <div
+                className={cx(styles.case, styles[`case_${this.props.id}`])}
+                style={{
+                    backgroundColor: atLeast('lg', this) ? 'transparent' : this.props.bgColor,
+                    backgroundImage: atLeast('lg', this) ? 'none' : `url(${this.props.img})`
                 }}>
-                <Flexbox
+                <div
                     className={cx(styles.imageBox, styles[`imageBox_${this.props.id}`])}
-                    justifyContent="center"
-                    alignItems="center"
-                    flexDirection="column"
-                    flexBasis={is('sm', this) ? '100vw' : '50vw'}
                     style={{
-                        backgroundColor: this.props.bgColor
+                        backgroundColor: atMost('md', this) ? 'transparent' : this.props.bgColor,
+                        backgroundImage: atMost('md', this) ? 'transparent' : `url(${this.props.img})`
                     }}>
-                    <img src={this.props.img} alt="" />
-                </Flexbox>
-                <Flexbox
+                </div>
+                <div
                     className={styles.contentBox}
-                    flexDirection="column"
-                    justifyContent="center"
-                    alignItems="flex-start"
-                    flexBasis="50vw">
-                    <SmallTitle
+                    style={{
+                        backgroundColor: atLeast('lg', this) ? '#E5E5E5' : 'transparent'
+                    }}>
+                    <Title
+                        mode="small"
+                        lightMode={this.props.lightMode}
                         align="left">
                         {this.props.range}
-                    </SmallTitle>
+                    </Title>
                     <Highlight
                         line1={this.props.type}
                         line2={this.props.title}
+                        lightMode={this.props.lightMode}
                         invert={true}
                         align="left"
                         margin="10px 0 0 0" />
                     {
                         atLeast('md', this) && (
                             <DescriptionText
+                                lightMode={this.props.lightMode}
                                 align="left"
                                 margin="30px 0"
                                 size={22}
@@ -98,59 +93,85 @@ export default withRouter(sparkScrollFactory(withDimensions(class WorkCase exten
                     {
                         this.props.link && (
                             <Link to={`${this.props.location.pathname}/${this.props.link}`}>
-                                <img src="/img/arrow-right.png" alt="View more" />
+                                <img src={`/img/arrow-right${this.props.lightMode ? '-white' : ''}.png`} alt="View more" />
                             </Link>
                         )
                     }
                     {
                         !this.props.link && (
-                            <small className={styles.comingSoon}>Coming soon...</small>
+                            <Title
+                                mode="small"
+                                lightMode={this.props.lightMode}>
+                                Coming Soon
+                            </Title>
                         )
                     }
-                </Flexbox>
-                {/*
-                <MediaQuery minDeviceWidth={1024}>
-                    <div className={styles.caseLg}>
-                        <div className={styles.imagePanelLg}
-                            style={{
-                                backgroundColor: this.props.bgColor,
-                                backgroundPosition: this.props.bgPositionLg,
-                                backgroundSize: this.props.bgSize,
-                                backgroundImage: `url(${this.props.img})`
-                            }}>
-                        </div>
-                        <div className={styles.contentPanelHolderLg}>
-                            <div className={styles.contentPanelLg}>
-                                <span className={styles.range}>{this.props.range}</span>
-                                <h3 className={styles.type}>{this.props.type}</h3>
-                                <h2 className={styles.title}>{this.props.title}</h2>
-                                <p className={styles.desc}>{this.props.desc}</p>
-                                <Link to={`${this.props.location.pathname}/${this.props.link}`} className={styles.viewMoreLg}>
-                                    <img src="/img/arrow-right.png" alt="View more" />
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </MediaQuery>
-                <MediaQuery maxDeviceWidth={1023}>
-                    <div className={styles.caseSm} style={{
-                        backgroundColor: this.props.bgColor,
-                        backgroundPosition: this.props.bgPositionSm,
-                        backgroundSize: this.props.bgSizeSm,
-                        backgroundImage: `url(${this.props.img})`
-                    }}>
-                        <div className={styles.contentPanelSm}>
-                            <span className={classnames(styles.range, styles.rangeSm, this.props.light && styles.whiteFont)}>{this.props.range}</span>
-                            <h3 className={classnames(styles.type, styles.typeSm, this.props.light && styles.whiteFont)}>{this.props.type}</h3>
-                            <h2 className={classnames(styles.title, styles.titleSm, styles.titleSm, this.props.light && styles.whiteFont)}>{this.props.title}</h2>
-                            <Link to={`${this.props.location.pathname}/${this.props.link}`} className={styles.viewMoreSm}>
-                                <img src={`/img/arrow-right${this.props.light ? '-white' : ''}.png`} alt="View more" />
-                            </Link>
-                        </div>
-                    </div>
-                </MediaQuery>
-                */}
-            </SCFlexbox>
+                </div>
+            </div>
         );
     }
-})));
+};
+
+const styles = StyleSheet.create({
+    case: {
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center center',
+        backgroundSize: '80%',        
+        "@media (max-width: 768px)": {
+            flexDirection: "column",
+            justifyContent: 'space-around'
+        }
+    },
+    case_alphanation: {
+        backgroundSize: 'cover'
+    },
+    imageBox: {
+        width: "auto",
+        height: "100vh",
+        overflow: 'hidden',
+        flexBasis: "50%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center 20vh',
+        backgroundSize: '80%',
+        "@media (max-width: 768px)": {
+            display: "none"
+        }
+    },
+    imageBox_alphanation: {
+        backgroundSize: "cover"
+    },
+    imageBox_img_alphanation: {
+        backgroundColor: 'transparent',
+        "@media (max-width: 768px)": {
+            position: 'absolute',
+            backgroundColor: 'transparent',
+        }
+    },
+    contentBox: {
+        width: "50vw",
+        backgroundColor: "#E5E5E5",
+        padding: "0 25px 0 25px",
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        position: 'relative',
+        "@media (max-width: 768px)": {
+            width: "100vw",
+            marginTop: "60vh"
+        }
+    },
+    center: {
+        textAlign: "center",
+    },
+    strong: {
+        fontWeight: 700
+    }
+});

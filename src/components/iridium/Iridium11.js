@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import Flexbox from 'flexbox-react';
 import CenteredContent from '../CenteredContent';
 import Loud from '../Loud';
-import SmallTitle from '../SmallTitle';
+import Title from '../Title';
 import Carousel from '../Carousel';
 import DescriptionText from '../DescriptionText';
 import withDimensions, { is, atLeast, atMost, width } from '../hoc/withDimensions';
@@ -25,9 +25,9 @@ export default withDimensions(class Iridium11 extends PureComponent {
                     <Flexbox
                         flexDirection="column"
                         width="50%">
-                        <SmallTitle>
+                        <Title mode="small">
                             UI, UX and Website Design
-                        </SmallTitle>
+                        </Title>
                         <DescriptionText
                             width="100%"
                             size={23}
